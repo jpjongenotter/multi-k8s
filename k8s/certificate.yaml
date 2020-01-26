@@ -1,0 +1,18 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: famjongenotter-nl-tls
+spec:
+  secretName: famjongenotter-nl
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: famjongenotter.nl
+  dnsNames:
+    - famjongenotter.nl
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - famjongenotter.nl
